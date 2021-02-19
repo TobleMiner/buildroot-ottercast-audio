@@ -33,10 +33,10 @@ jobs:
       # Upload artifacts
       # First party upload plugin is magic and does not need github token
       - id: pkgname
-        name: Find package name
-        run: echo "::set-output name=imgfile::$(ls output/images/*.img)"
+        name: Find image name
+        run: echo "::set-output name=imgfile::$(ls "$GITHUB_WORKSPACE"/../buildroot-2020.11.2/output/images/*.img)"
 
-      - name: Upload package
+      - name: Upload image
         uses: actions/upload-artifact@v2-preview
         with:
           name: ${{ steps.pkgname.outputs.imgfile }}
