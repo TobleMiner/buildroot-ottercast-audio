@@ -22,7 +22,7 @@ jobs:
         run: |
           cd "$(realpath "$GITHUB_WORKSPACE")"
           sudo apt-get update
-          sudo apt-get -y install build-essential bc gcc patch binutils unzip rsync wget bzip2 gzip perl
+          sudo apt-get -y install build-essential bc gcc patch binutils unzip rsync wget bzip2 gzip perl gcc-multilib
           cd ..
           wget https://buildroot.org/downloads/buildroot-2020.11.2.tar.gz
           tar -xaf buildroot-2020.11.2.tar.gz
