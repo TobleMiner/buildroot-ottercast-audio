@@ -39,7 +39,7 @@ jobs:
       - name: Upload image
         uses: actions/upload-artifact@v2-preview
         with:
-          name: ${{ steps.pkgname.outputs.imgfile }}
+          name: sdcard.img
           path: ${{ steps.pkgname.outputs.imgfile }}
 
   release:
@@ -53,7 +53,7 @@ jobs:
       - name: Download package
         uses: actions/download-artifact@v1
         with:
-          name: ${{ needs.build.outputs.imgfile }}
+          name: sdcard.img
           path: .
 
       # Upload actual release
@@ -62,6 +62,6 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            ${{ needs.build.outputs.imgfile }}
+            sdcard.img
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
